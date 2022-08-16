@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+    <file name="EUTMS_20201118_0001.zip">
+        <hash type="sha-256">1a0fadefe62a6a86804e5998f0f30ba66f01a765fe8f23d118c1068be80f3afe</hash>
+        <url>ftp://opendata:kagar1n@ftp.euipo.europa.eu/Trademark/Full/2020/EUTMS_20201118_0001.zip</url>
+    </file>
+    <file name="EUTMS_20201118_0002.zip">
+        <hash type="sha-256">2286e28b8c201c374326518d2168b0416fff97816ddba6f62c7f3afb0d0d49bc</hash>
+        <url>ftp://opendata:kagar1n@ftp.euipo.europa.eu/Trademark/Full/2020/EUTMS_20201118_0002.zip</url>
+    </file>
+    <file name="EUTMS_20201118_0003.zip">
+        <hash type="sha-256">0013e60f3d0f264cd3d75557fac2558c35fa7091cd818b7275d7cfd1d91685f1</hash>
+        <url>ftp://opendata:kagar1n@ftp.euipo.europa.eu/Trademark/Full/2020/EUTMS_20201118_0003.zip</url>
+    </file>
+    <file name="EUTMS_20201118_0004.zip">
+        <hash type="sha-256">6652a3010c4f8a5bf278d9c15a69de3f58c00e7216e6ebc78ba9a3b9a297e08b</hash>
+        <url>ftp://opendata:kagar1n@ftp.euipo.europa.eu/Trademark/Full/2020/EUTMS_20201118_0004.zip</url>
+    </file>
+</metalink>
