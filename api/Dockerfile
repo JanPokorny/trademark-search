@@ -11,4 +11,4 @@ FROM base AS runtime
 COPY --from=python-deps /workdir/.venv /workdir/.venv
 ENV PATH="/workdir/.venv/bin:$PATH"
 COPY . .
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80"]

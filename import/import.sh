@@ -23,7 +23,7 @@ else
 fi
 
 echo '# Importing CSV to PostgreSQL...'
-CONNECTION_STRING="postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres:5432/$POSTGRES_DB"
+CONNECTION_STRING="postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_HOST:5432/$POSTGRES_DB"
 echo $CONNECTION_STRING
 while ! pg_isready -d $CONNECTION_STRING; do sleep 1; done
 psql -d $CONNECTION_STRING -c '\COPY trademarks FROM STDIN WITH CSV HEADER;' < ./data/items.csv || true  # ignore errors -- data may already be imported

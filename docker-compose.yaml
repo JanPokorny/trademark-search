@@ -2,6 +2,7 @@ x-postgres-env: &postgres-env
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
   POSTGRES_DB: postgres
+  POSTGRES_HOST: postgres
 
 services:
   postgres:

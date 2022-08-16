@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
+environ-config = "*"
+sqlalchemy = {version = "*", extras = ["postgresql_psycopg2binary"]}
 
 [dev-packages]
 
