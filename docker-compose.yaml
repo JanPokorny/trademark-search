@@ -5,7 +5,7 @@ x-postgres-env: &postgres-env
 
 services:
   postgres:
-    image: postgres:14.1-alpine
+    image: postgres:14.5-alpine3.16
     restart: always
     environment:
       <<: *postgres-env
@@ -25,16 +25,16 @@ services:
     depends_on:
       postgres:
         condition: service_started
-#  api:
-#    build:
-#      context: ./api
-#    environment:
-#      <<: *cenv
-#    ports:
-#      - 9999:80
-#    depends_on:
-#      import:
-#        condition: service_completed_successfully
+  api:
+    build:
+      context: ./api
+    environment:
+      <<: *postgres-env
+    ports:
+      - 80:80
+    depends_on:
+      import:
+        condition: service_completed_successfully
 
 volumes:
   postgres:
