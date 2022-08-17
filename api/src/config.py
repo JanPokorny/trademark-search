@@ -1,6 +1,7 @@
 import environ
 
-@environ.config(prefix='POSTGRES')
+
+@environ.config(prefix="POSTGRES")
 class PostgresConfig:
     USER = environ.var()
     PASSWORD = environ.var()

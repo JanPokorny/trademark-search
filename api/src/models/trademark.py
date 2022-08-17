@@ -1,9 +1,12 @@
-import sqlalchemy
-import sqlalchemy.orm
-import pydantic
 import datetime
 
+import pydantic
+import sqlalchemy
+import sqlalchemy.orm
+
 from ..database import Base
+
+# More subdivision for such a small app didn't feel right, so I put all trademark-ops in this file
 
 
 class TrademarkORM(Base):
@@ -13,7 +16,9 @@ class TrademarkORM(Base):
     application_date = sqlalchemy.Column(sqlalchemy.Date)
     registration_date = sqlalchemy.Column(sqlalchemy.Date)
     expiry_date = sqlalchemy.Column(sqlalchemy.Date)
-    word_mark_text_matchable = sqlalchemy.Column(sqlalchemy.String(255), nullable=False, server_default="")
+    word_mark_text_matchable = sqlalchemy.Column(
+        sqlalchemy.String(255), nullable=False, server_default=""
+    )
 
 
 class TrademarkDTO(pydantic.BaseModel):
@@ -25,3 +30,22 @@ class TrademarkDTO(pydantic.BaseModel):
 
     class Config:
         orm_mode = True
+
+
+def get_trademarks_by_text(db: sqlalchemy.orm.Session, text: str):
+    return db.query(TrademarkORM).where(TrademarkORM.word_mark_text == text).all()
+
+
+def get_trademarks_by_fuzzy_text(
+    db: sqlalchemy.orm.Session, text: str, limit: int = 10
+) -> list[TrademarkORM]:
+    return (
+        db.query(TrademarkORM)
+        .order_by(
+            sqlalchemy.func.similarity(
+                TrademarkORM.word_mark_text_matchable, sqlalchemy.func.matchable(text)
+            ).desc()
+        )
+        .limit(limit)
+        .all()
+    )
